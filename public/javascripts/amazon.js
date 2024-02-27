@@ -1,13 +1,29 @@
 const keywordInput = document.getElementById("keyword"); // Getting the input element
 const searchButton = document.getElementById("search"); // Getting the button element
 const resultsContainer = document.getElementById("results"); // Getting the container element
-const resultsNumber = document.querySelector('.results');
+const resultsSummary = document.querySelector('.results-summary');
+
+function enableLoading() {
+  searchButton.setAttribute("disabled", "disabled");
+  const loadingElement =
+    `<div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>`;
+  resultsSummary.innerHTML = loadingElement; // Adding the loading element
+}
+function disableLoading() {
+  searchButton.removeAttribute("disabled"); // Enabling the button
+  resultsSummary.innerHTML = "";  // Clearing the loading element
+}
 
 async function search() {
+  enableLoading();
   let keyword = keywordInput.value;
-  let response = await fetch(`/api/scrape?keyword=${keyword}`); // Making a GET request to the /api/scrape route
+  // Making a GET request to the /api/scrape route
+  let response = await fetch(`/api/scrape?keyword=${keyword}`)
+    .finally(disableLoading);
   let products = await response.json(); // Getting the JSON response
-  resultsNumber.innerHTML = `There is ${products.length} results for "${keyword}" `;
+  resultsSummary.innerHTML = `There is ${products.length} results for "${keyword}" `;
 
   resultsContainer.innerHTML = "";
   products.forEach(product => { // Looping through the products array
@@ -33,12 +49,10 @@ async function search() {
 }
 searchButton.addEventListener('click', () => {
   search();
-  keywordInput.value = '';
 });
 
 document.getElementById('keyword').addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
     search();
-    keywordInput.value = '';
-  }
+    }
 });

@@ -9,7 +9,7 @@ body {
   color: #333;
 }
 
-.results {
+.results-summary {
   margin-bottom: 10px;
   color: #212529;
   font-weight: var(--bs-body-font-weight);
