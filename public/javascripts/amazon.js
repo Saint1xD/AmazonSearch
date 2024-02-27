@@ -12,17 +12,20 @@ async function search() {
   resultsContainer.innerHTML = "";
   products.forEach(product => { // Looping through the products array
     let productContainer = document.createElement("div"); // Creating a div for each product
-    productContainer.className = "col-lg-2 col-md-3 col-6 card card-index m-1 shadow"; // Adding a class to the product container
+    productContainer.className = "col-lg-2 col-md-5 col-6 card card-index m-1 shadow"; // Adding a class to the product container
+    let reviewsText = product.reviews
+      ? `<p>${product.reviews} reviews: ${product.rating}</p>`
+      : `0 reviews`;
     productContainer.innerHTML = `
-      <div class="product"">
-        <img src="${product.image}" class="image"/>
+      <div class="product">
+        <img src="${product.image}" class="image bg-light-subtle"/>
         <div class="description mt-2">
           <a href="${product.link}"><h6>${product.title}</h2></a>
           <div class="reviews">
-            <p>${product.reviews} Reviews: ${product.rating}</div></p>
+            ${reviewsText}
           </div>
-          </div>
-          <p class="price position-absolute">${product.price}</p>
+          <p class="price">${product.price}</p>
+        </div>
       </div>
     `;
     resultsContainer.appendChild(productContainer); // Appending the product container to the results container

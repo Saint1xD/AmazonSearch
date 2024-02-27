@@ -77,8 +77,6 @@ background: blue;
 
 .price {
   font-size: 17px;
-  bottom: 0px;
-  right: 15px;
   font-weight: bold;
 }
 
@@ -88,16 +86,14 @@ background: blue;
 
 .description{
   height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
 .reviews {
+  font-size: 15px;
 }
 
-.card-index {
-  height: 550px;
+div.card-index {
+  /* --bs-card-height: 500px; */
   border: 1px solid #ccc
 }
 
