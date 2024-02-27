@@ -9,6 +9,11 @@ body {
   color: #333;
 }
 
+.results {
+  margin-bottom: 10px;
+  color: #212529;
+  font-weight: var(--bs-body-font-weight);
+}
 a {
   color: #00B7FF;
 }
@@ -68,4 +73,38 @@ height: 50px;
 width: 110px;
 background: blue;
 
+}
+
+.price {
+  font-size: 17px;
+  bottom: 0px;
+  right: 15px;
+  font-weight: bold;
+}
+
+.product{
+  height: 100%;
+}
+
+.description{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.reviews {
+}
+
+.card-index {
+  height: 550px;
+  border: 1px solid #ccc
+}
+
+.image {
+  height: 300px;
+  width: 300px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
